@@ -182,9 +182,9 @@ namespace {
 	    PC pc;
 	    ierr = KSPGetPC(ksp, &pc); CHKERRXX(ierr);
 	    ierr = PCSetType(pc, PCLU); CHKERRXX(ierr);
-	    ierr = PCFactorSetMatSolverPackage(pc, MATSOLVERMUMPS); CHKERRXX(ierr);
-//	    ierr = PCFactorSetMatSolverPackage(pc, MATSOLVERSUPERLU_DIST); CHKERRXX(ierr);
-//	    ierr = PCFactorSetMatSolverPackage(pc, MATSOLVERSUPERLU); CHKERRXX(ierr);
+	    ierr = PCFactorSetMatSolverType(pc, MATSOLVERMUMPS); CHKERRXX(ierr);
+//	    ierr = PCFactorSetMatSolverType(pc, MATSOLVERSUPERLU_DIST); CHKERRXX(ierr);
+//	    ierr = PCFactorSetMatSolverType(pc, MATSOLVERSUPERLU); CHKERRXX(ierr);
 
 	    // note: the default tolerance is 1e-8 instead of 1e-16. this has
 	    // led to incorrect mode fields for the degenerate fundamental
@@ -291,5 +291,5 @@ std::unique_ptr<ISolverResult> eigenSolver (
 	   "needed for this."));
     }
     
-    return make_unique<SlepcSolverResult>(std::move(matrix), is_matrix_real, sigma, num_eigenvalues);
+    return wgms3d::make_unique<SlepcSolverResult>(std::move(matrix), is_matrix_real, sigma, num_eigenvalues);
 }

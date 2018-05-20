@@ -266,7 +266,7 @@ namespace wgms3d {
     void
     ModeSolver::set_geometry (const char *mgp_filename)
     {
-	sp->mgp = make_unique<MGP>(mgp_filename);
+	sp->mgp = wgms3d::make_unique<MGP>(mgp_filename);
     }
 
 /* -- GRID + GHOST-POINT HANDLING ---------------------------------------------------------- */
@@ -451,7 +451,7 @@ namespace wgms3d {
 	std::cout << "Setting up FD system matrix (initial dimension = "
 		  << 2*sp->fcsize << ")... " << std::endl;
 
-	auto A0 = make_unique<sparse_matrix<complex<double>>>(2*sp->fcsize);
+	auto A0 = wgms3d::make_unique<sparse_matrix<complex<double>>>(2*sp->fcsize);
 
 	const auto nir = sp->nir;
 	for(j = NUM_GHOST_POINTS; j < _zs.size() - NUM_GHOST_POINTS; j++) {
@@ -823,11 +823,11 @@ namespace wgms3d {
     
 	if(sp->fd_mode == FDMode::Scalar)
 	{
-	    return make_unique<ScalarMode>(i, migamma, sp, solver_result);
+	    return wgms3d::make_unique<ScalarMode>(i, migamma, sp, solver_result);
 	}
 	else
 	{
-	    return make_unique<VectorMode>(i, migamma, sp, solver_result, deriv_field_mats);
+	    return wgms3d::make_unique<VectorMode>(i, migamma, sp, solver_result, deriv_field_mats);
 	}
     }
 

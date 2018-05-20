@@ -4,7 +4,7 @@
 #include <memory>
 #include <utility>
 
-namespace {
+namespace wgms3d{
 
     /// Convenience function. Avoids having to type T twice. Will be
     /// in C++14.
