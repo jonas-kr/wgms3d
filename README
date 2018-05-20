@@ -25,3 +25,19 @@
     For documentation, see doc/index.html
 
     ---------------------------------------------------------------------
+
+
+	This fork of wgms3d has been modified to run on my system using PETSC
+	and SLEPC. It might be necessary to run "touch configure.ac aclocal.m4 
+	configure Makefile.am Makefile.in".
+
+	I'm configuring PETSC (3.9) with the following flags:
+	./configure --with-mpi --download-scalapack --download-metis 
+	--download-parmetis --download-mumps --download-superlu_dist 
+	--with-clanguage=c++ --with-debugging=0 COPTFLAGS='-O3 -march=native' 
+	FOPTFLAGS='-O3 -march=native' CXXOPTFLAGS='-O3 -march=native' 
+	--with-scalar-type=complex --download-mpich --download-fblaslapack=1 
+	--with-cmake
+
+	Running wgms3d might require adding the following to LD_LIBRARY_PATH:
+	export LD_LIBRARY_PATH='.../slepc/arch-linux2-cxx-opt/lib':$LD_LIBRARY_PATH
