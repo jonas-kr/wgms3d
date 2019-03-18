@@ -28,8 +28,7 @@
 
 
 	This fork of wgms3d has been modified to run on my system using PETSC
-	and SLEPC. It might be necessary to run "touch configure.ac aclocal.m4 
-	configure Makefile.am Makefile.in".
+	and SLEPC. It might be necessary to run "autoreconf -ivf".
 
 	I'm configuring PETSC (3.9) with the following flags:
 	./configure --with-mpi --download-scalapack --download-metis 
