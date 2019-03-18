@@ -247,8 +247,8 @@ namespace {
 
 	    if(!xr)
 	    {
-		ierr = MatGetVecs(mat, &xr, PETSC_NULL); CHKERRXX(ierr);
-		ierr = MatGetVecs(mat, &xi, PETSC_NULL); CHKERRXX(ierr);
+		ierr = MatCreateVecs(mat, &xr, PETSC_NULL); CHKERRXX(ierr);
+		ierr = MatCreateVecs(mat, &xi, PETSC_NULL); CHKERRXX(ierr);
 		ierr = VecCreateSeq(PETSC_COMM_SELF, rank == 0 ? n : 0, &local_vector); CHKERRXX(ierr);
 	    }
 
