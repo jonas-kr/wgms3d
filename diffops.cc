@@ -76,7 +76,8 @@ namespace
     {
 	int i;
 
-	std::memset(M, 0, NV*NV*sizeof(M[0]));
+	// std::memset(M, 0, NV*NV*sizeof(M[0]));
+	std::memset(static_cast<void*>(M), 0, NV*NV*sizeof(M[0]));
 
 	for(i = 0; i < NV; i += NF) { /* This is the same for the R and Z field components */
 	    M[0+i + (0+i)*NV] = 1.0;
@@ -222,7 +223,8 @@ namespace wgms3d {
 #error "make_curv_interface_matrix doesn't support NDO>5"
 #endif
 
-	std::memset(MLR, 0, NV*NV*sizeof(MLR[0]));
+	// std::memset(MLR, 0, NV*NV*sizeof(MLR[0]));
+	std::memset(static_cast<void*>(MLR), 0, NV*NV*sizeof(MLR[0]));
 
 	/* Initialize diagonal entries to unity (= trivial interface
 	 * equations = no discontinuity) */
@@ -352,7 +354,8 @@ namespace wgms3d {
 	complex<double> *D = new complex<double>[N*N];
 	complex<double> *matrix = new complex<double>[N*N];
 
-	std::memset(matrix, 0, sizeof(matrix[0])*N*N);
+	// std::memset(matrix, 0, sizeof(matrix[0])*N*N);
+	std::memset(static_cast<void*>(matrix), 0, sizeof(matrix[0])*N*N);
 	int i;
 	for(i = 0; i < N; i++) {
 	    matrix[i+i*N] = 1.0;
@@ -648,7 +651,8 @@ namespace wgms3d {
 	*/
 
 	M0 = new complex<double>[(2*NDO) * (2*NSP)];
-	std::memset(M0, 0, (2*NDO) * (2*NSP) * sizeof(*M0));
+	// std::memset(M0, 0, (2*NDO) * (2*NSP) * sizeof(*M0));
+	std::memset(static_cast<void*>(M0), 0, (2*NDO) * (2*NSP) * sizeof(*M0));
 
 	nrows = 2*NDO;
 	inc = 1;
